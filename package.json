@@ -1,0 +1,21 @@
+{
+  "name": "motiv",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "workspaces": [
+    "motiv-frontend",
+    "motiv-backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:frontend": "npm run dev --workspace=motiv-frontend",
+    "dev:backend": "npm run dev --workspace=motiv-backend"
+  },
+  "keywords": [],
+  "author": "Youssuf Abdulaziz ",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

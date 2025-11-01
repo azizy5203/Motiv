@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+coverage/
+tmp/
+temp/
+.cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE / Editor stuff
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+*.log
+.lock-wscript
+
+# OS generated
+Thumbs.db
