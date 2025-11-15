@@ -24,7 +24,6 @@ pnpm-debug.log*
 !.env.example
 
 # IDE / Editor stuff
-.vscode/
 .idea/
 .DS_Store
 *.swp
