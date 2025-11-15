@@ -1,35 +1,35 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import axios from 'axios'
+import axios from "axios";
+
+import "./App.css";
+import { useEffect, useState } from "react";
 
 function App() {
-
-  const [users, setUsers] = useState([])
-
-  async function loadUsers(){
-   try {
-    const {data} =  await axios.get('/api/get-all')
-    setUsers(data)
-   } catch (error) {
-    console.log(error)
-   }
-  }
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    loadUsers()
-  }, [])
+    async function loadUsers() {
+      try {
+        const { data } = await axios.get("/api/get-all");
+        setUsers(data);
+      }
+      catch (error) {
+        console.error(error);
+      }
+    }
+    loadUsers();
+  }, []);
 
   return (
     <>
-     <h1>Hello World</h1>
-      {users && users.map((user: {name: string, email: string}) => (
-      <div key={user.name}>
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
-      </div>
-     ))}
+      <h1>Hello World</h1>
+      {users && users.map((user: { name: string; email: string }) => (
+        <div key={user.name}>
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+        </div>
+      ))}
     </>
-  )
+  );
 }
 
-export default App
+export default App;

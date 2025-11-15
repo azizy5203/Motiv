@@ -10,12 +10,15 @@
   "scripts": {
     "dev": "concurrently \"npm:dev:*\"",
     "dev:frontend": "npm run dev --workspace=motiv-frontend",
-    "dev:backend": "npm run dev --workspace=motiv-backend"
+    "dev:backend": "npm run dev --workspace=motiv-backend",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "Youssuf Abdulaziz ",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "husky": "^9.1.7"
   }
 }
