@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <h1>Users</h1>
+      <h1>Users List</h1>
       {users && users.map((user: { name: string; email: string }) => (
         <div key={user.name}>
           <h2>{user.name}</h2>
