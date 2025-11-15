@@ -11,6 +11,8 @@
     "dev": "concurrently \"npm:dev:*\"",
     "dev:frontend": "npm run dev --workspace=motiv-frontend",
     "dev:backend": "npm run dev --workspace=motiv-backend",
+    "lint": "npm run lint --workspace=motiv-frontend",
+    "lint:fix": "npm run lint:fix --workspace=motiv-frontend",
     "prepare": "husky"
   },
   "keywords": [],
