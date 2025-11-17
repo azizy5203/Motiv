@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  email       String      @unique
+  password    String
+  firstName   String
+  lastName    String
+  phoneNumber String?
+  gender      String?
+  isVerified  Boolean     @default(false)
+  verificationToken String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  userGroups  UserGroup[] @relation(fields: [userGroupIds], references: [id])
+  userGroupIds String[]   @db.ObjectId
+}
+
+model UserGroup {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  name        String       @unique
+  users       User[]       @relation(fields: [userIds], references: [id])
+  userIds     String[]     @db.ObjectId
+  permissions Permission[] @relation(fields: [permissionIds], references: [id])
+  permissionIds String[]   @db.ObjectId
+}
+
+model Permission {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  module      String
+  action      String
+  userGroups  UserGroup[] @relation(fields: [userGroupIds], references: [id])
+  userGroupIds String[]   @db.ObjectId
+
+  @@unique([module, action])
+}
+
+model Page {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  pageCode  String   @unique
+  name      String
+  route     String
+  parentId  String?  @db.ObjectId
+  parent    Page?    @relation("PageToPage", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  children  Page[]   @relation("PageToPage")
+}
