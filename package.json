@@ -13,7 +13,8 @@
     "dev:backend": "npm run dev --workspace=motiv-backend",
     "lint": "npm run lint --workspace=motiv-frontend",
     "lint:fix": "npm run lint:fix --workspace=motiv-frontend",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "jest"
   },
   "keywords": [],
   "author": "Youssuf Abdulaziz ",
@@ -22,7 +23,12 @@
     "concurrently": "^9.2.1",
     "eslint-plugin-react-hooks": "^7.0.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.6"
+    "lint-staged": "^16.2.6",
+    "jest": "^30.0.0",
+    "ts-jest": "^29.2.5",
+    "@types/jest": "^30.0.0",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2"
   },
   "lint-staged": {
     "*": "npm run lint"
